@@ -1,2 +1,6 @@
 # TPIP1
-Trabajo Práctico Integrador 2024
+**Programas:**
+* Truco (parcial).
+* Buscaminas.
+* Planificador de ensamblado de muebles.
+* Sorteo de equipos en distintos deportes.
