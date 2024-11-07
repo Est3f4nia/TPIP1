@@ -1,4 +1,4 @@
-# TPIP1
+# Trabajo Práctico Integrador - Programación I
 **Programas:**
 * Truco (parcial).
 * Buscaminas.
