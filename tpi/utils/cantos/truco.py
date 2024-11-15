@@ -17,7 +17,7 @@ def truco(ronda, jugador, mano, valor_mano, reiniciar):
         elif canto == "nq":
             os.system("cls")
             reiniciar = True
-    return valor_mano, reiniciar
+    return valor_mano, reiniciar, canto
 
 truco = 2
 
