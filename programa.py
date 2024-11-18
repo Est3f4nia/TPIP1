@@ -44,7 +44,7 @@ def obtener_divisiones():
 
     return divisiones, puertas, repisas, cajones
 
-def main():
+def mainCM():
     mostrar_menu_muebles()
     tipo_mueble = input("Seleccione el tipo de mueble: ")
     
@@ -64,5 +64,3 @@ def main():
     print("Puertas:", puertas)
     print("Repisas:", repisas)
     print("Cajones:", cajones)
-
-main()
