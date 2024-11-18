@@ -32,3 +32,6 @@ while opcion != 0:
         tpi.mainT.mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, manoj1, manoj2, valor_mano, ultimo_en_cantar, punto_pacial1, punto_pacial2)
     else:
         print("Opción inválida")
+
+if opcion == 0:
+    print("Saliendo...")
