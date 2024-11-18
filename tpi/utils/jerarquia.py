@@ -24,15 +24,12 @@ def comparar_cartas(vector):
         valor_1 = jerarquia_truco[vector[0][0], vector[0][1]]
     elif vector[0][0]:
         valor_1 = jerarquia_truco[vector[0][0]]
-        print(valor_1)
 
     if vector[1][0] == '1' or vector[1][0] == '7':
         valor_2 = jerarquia_truco[vector[1][0], vector[1][1]]
     else:
         valor_2 = jerarquia_truco[vector[1][0]]
-        print(valor_2)
-        
-    # Fijate el tema de los retornos, podes modificar lo que retorne la función
+
     if valor_1 > valor_2:
         return vector[0]
     elif valor_2 > valor_1:
