@@ -1,7 +1,18 @@
+# El código da el siguente error: 
+# File "TPIP1-main\main.py", line 5, in <module> 
+# File "mainT.py", line 3, in <module>
+# from utils.interfaz import (mostrar_cartas_mesa, opciones_usuario,
+# ModuleNotFoundError: No module named 'utils'
+# La verdad no me doy cuenta de por qué no reconoce la carpeta utils, no sé si será por alguna incompatibilidad pero no creo
+# Una disculpa
+
 from buscaminas import (jugar)
+
 from programa import (mainCM)
+
 from tpi.mainT import (mainT)
 from tpi.utils.interfaz.repartir import (repartir)
+
 
 print("----- TPI Grupo 5 -----")
 print('1) Buscaminas')
