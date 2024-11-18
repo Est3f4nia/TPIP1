@@ -69,5 +69,3 @@ def jugar():
                 terminado = True
 
     mostrar_tablero(tablero, [[True for _ in range(tamaño)] for _ in range(tamaño)])
-
-jugar()
