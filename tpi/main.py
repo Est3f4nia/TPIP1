@@ -1,46 +1,105 @@
-# Incompleto
+import os
 
-import random
-from utils.interfaz.repartir import (repartir)
-from utils.interfaz.presentacion_mano import (mostrar_mano)
-from utils.interfaz.opciones_usuario import (opciones_jugador)
+from utils.interfaz import (mostrar_cartas_mesa, opciones_usuario,
+                            presentacion_mano, repartir)
 
-mano1 = [0] * 2
 mano2 = [0] * 2
 mano3 = [0] * 2
 
-manoj1, manoj2 = repartir()
-
-valor_ronda = 1
 jugador = 1
-
+ronda = 0
 puntosj1 = 0
 puntosj2 = 0
 
-reiniciar = False # Hay demasiadas funciones, ¿cómo podemos hacer llegar el valor True hasta acá?
+reiniciar = False
+manoj1, manoj2 = repartir.repartir()
+valor_mano = 1
 
-while reiniciar == False:
-    print("----- Truco en consola -----")
-    print("Turno del jugador", jugador)
-    print("Valor de la mano:", valor_ronda)
+ultimo_en_cantar = 0
 
-    if jugador == 1:
-        print("Puntos:", puntosj1) # Incompleto
-        mostrar_mano(jugador, manoj1)
-        opciones_jugador(ronda, jugador, manoj1, manoj2, valor_ronda, reiniciar)
-        jugador = 2
-    if jugador == 2:
-        print("Puntos:", puntosj2)
-        mostrar_mano(jugador, manoj2)
-        opciones_jugador(ronda, jugador, manoj2, valor_ronda, reiniciar)
-        jugador = 1
+punto_pacial1 = 0
+punto_pacial2 = 0
 
-    ronda += 1 # Idea para cambiar de ronda (repartir de nuevo)
+def mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, manoj1, manoj2, valor_mano, ultimo_en_cantar, punto_pacial1, punto_pacial2):
+    while reiniciar == False:
+        os.system("cls")
+        print("----- Truco en consola -----")
+        print("Turno del jugador", jugador)
+        print("Puntos:", puntosj1, "-", puntosj2)
+        print("Valor de la mano:", valor_mano)
+        mostrar_cartas_mesa.mostrar_cartas_mesa(mano1, mano2, mano3, ronda, punto_pacial1, punto_pacial2, jugador)
 
-if reiniciar == True: # Intento de reinicio
-    manoj1, manoj2 = repartir()
-    mano1 = [0] * 2
-    mano2 = [0] * 2
-    mano3 = [0] * 2
+        if jugador == 1:
+            if ronda == 0:
+                presentacion_mano.mostrar_mano(jugador, manoj1)
+                reiniciar, repetir, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar = opciones_usuario.opciones_jugador(ronda, jugador, manoj1, manoj2, mano1, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar)
+            elif ronda == 1:
+                presentacion_mano.mostrar_mano(jugador, manoj1)
+                reiniciar, repetir, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar = opciones_usuario.opciones_jugador(ronda, jugador, manoj1, manoj2, mano2, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar)
+            elif ronda == 2:
+                presentacion_mano.mostrar_mano(jugador, manoj1)
+                reiniciar, repetir, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar = opciones_usuario.opciones_jugador(ronda, jugador, manoj1, manoj2, mano3, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar)
+        
+        if jugador == 2:
+            if ronda == 0:
+                presentacion_mano.mostrar_mano(jugador, manoj2)
+                reiniciar, repetir, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar = opciones_usuario.opciones_jugador(ronda, jugador, manoj1, manoj2, mano1, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar)
+                if mano1[0] != 0 and mano1[1] != 0:
+                    ronda += 1
+            elif ronda == 1:
+                presentacion_mano.mostrar_mano(jugador, manoj2)
+                reiniciar, repetir, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar = opciones_usuario.opciones_jugador(ronda, jugador, manoj1, manoj2, mano2, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar)
+                if mano2[0] != 0 and mano2[1] != 0:
+                    ronda += 1
+            elif ronda == 2:
+                presentacion_mano.mostrar_mano(jugador, manoj2)
+                reiniciar, repetir, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar = opciones_usuario.opciones_jugador(ronda, jugador, manoj1, manoj2, mano3, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar)
+                if mano3[0] != 0 and mano3[1] != 0:
+                    ronda += 1
 
-    reiniciar = False
+        if repetir == False:
+            if jugador == 1:
+                jugador = 2
+            elif jugador == 2:
+                jugador = 1
+            os.system("cls")
+            
+        # ver si terminó
+        if ronda == 4 or punto_pacial1 == 2 or punto_pacial2 == 2:
+            reiniciar = True
+        
+        if reiniciar == True:
+            print("----- Fin de la mano -----")
+            
+            # dar puntos
+            if punto_pacial1 == 2:
+                print("El jugador 1 ganó", valor_mano, "puntos")
+                puntosj1 += valor_mano
+                jugador = 1
+            else:
+                print("El jugador 2 ganó", valor_mano, "puntos")
+                puntosj2 += valor_mano
+                jugador = 2
+
+            print("Repartiendo...")
+            mano1 = [0] * 2
+            mano2 = [0] * 2
+            mano3 = [0] * 2
+
+            ronda = 0
+            manoj1, manoj2 = repartir.repartir()
+            valor_mano = 1
+            punto_pacial1 = 0
+            punto_pacial2 = 0
+            reiniciar = False
+            
+            if puntosj1 >= 15 or puntosj2 >= 15:
+                reiniciar = True
+            
+            input("Presione enter para continuar")
+        else:
+            print("Cambio de jugador...")
+            input("Presione enter para continuar")
+
+    print("----- Fin del juego -----")
+    print("Puntos:", puntosj1, "-", puntosj2)
