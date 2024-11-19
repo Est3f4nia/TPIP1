@@ -1,5 +1,5 @@
 import os
-from utils.interfaz import presentacion_mano
+from tpi.utils.interfaz import presentacion_mano
 
 
 def truco(ronda, jugador, mano, valor_mano, reiniciar, ultimo_en_cantar):
