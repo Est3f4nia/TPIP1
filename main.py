@@ -1,30 +1,25 @@
-# El código da el siguente error: 
-# File "TPIP1-main\main.py", line 5, in <module> 
-# File "mainT.py", line 3, in <module>
-# from utils.interfaz import (mostrar_cartas_mesa, opciones_usuario,
-# ModuleNotFoundError: No module named 'utils'
-# La verdad no me doy cuenta de por qué no reconoce la carpeta utils, no sé si será por alguna incompatibilidad pero no creo
-# Una disculpa
-
 from buscaminas import (jugar)
 
 from programa import (mainCM)
 
+from tpi import utils
 from tpi.mainT import (mainT)
 from tpi.utils.interfaz.repartir import (repartir)
 
 
 print("----- TPI Grupo 5 -----")
+print("0) Salir")
 print('1) Buscaminas')
 print('2) Creador de muebles')
 print('3) Truco')
 opcion = int(input('Seleccione una opción: '))
+print("")
 
 while opcion != 0:
     if opcion == 1:
-        buscaminas.jugar()
+        jugar()
     elif opcion == 2:
-        programa.mainCM()
+        mainCM()
     elif opcion == 3:
         mano1 = [0] * 2
         mano2 = [0] * 2
@@ -34,7 +29,7 @@ while opcion != 0:
         puntosj1 = 0
         puntosj2 = 0
         reiniciar = False
-        manoj1, manoj2 = tpi.utils.interfaz.repartir.repartir()
+        manoj1, manoj2 = repartir()
         valor_mano = 1
         ultimo_en_cantar = 0
         punto_pacial1 = 0
