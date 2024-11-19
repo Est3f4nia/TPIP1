@@ -1,5 +1,5 @@
-from utils.interfaz import tirar_cartas_mesa
-from utils.truco import truco
+from tpi.utils.interfaz import tirar_cartas_mesa
+from tpi.utils.truco import truco
 
 def opciones_jugador(ronda, jugador, mano1, mano2, mano_mesa, reiniciar, valor_mano, punto_pacial1, punto_pacial2, ultimo_en_cantar):
     repetir = False
