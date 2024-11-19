@@ -1,8 +1,9 @@
 import os
 
-from utils.interfaz import (mostrar_cartas_mesa, opciones_usuario,
-                            presentacion_mano, repartir)
+from utils.interfaz import (opciones_usuario,
+                            presentacion_mano, repartir, mostrar_cartas_mesa)
 
+mano1 = [0] * 2
 mano2 = [0] * 2
 mano3 = [0] * 2
 
@@ -27,7 +28,8 @@ def mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, ma
         print("Turno del jugador", jugador)
         print("Puntos:", puntosj1, "-", puntosj2)
         print("Valor de la mano:", valor_mano)
-        mostrar_cartas_mesa.mostrar_cartas_mesa(mano1, mano2, mano3, ronda, punto_pacial1, punto_pacial2, jugador)
+
+        mostrar_cartas_mesa.mostrar_cartas_mesa(mano1, mano2, mano3, ronda, punto_pacial1, punto_pacial2)
 
         if jugador == 1:
             if ronda == 0:
@@ -103,3 +105,5 @@ def mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, ma
 
     print("----- Fin del juego -----")
     print("Puntos:", puntosj1, "-", puntosj2)
+
+mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, manoj1, manoj2, valor_mano, ultimo_en_cantar, punto_pacial1, punto_pacial2)
