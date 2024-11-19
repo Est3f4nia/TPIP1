@@ -25,9 +25,9 @@ def opciones_jugador(ronda, jugador, mano1, mano2, mano_mesa, reiniciar, valor_m
             
             if jugador == 1 and ultimo_en_cantar != 1:
                 ultimo_en_cantar = 1
-                valor_mano, reiniciar = truco(ronda, 2, mano2, valor_mano, reiniciar)
+                valor_mano, reiniciar, ultimo_en_cantar = truco(ronda, 2, mano2, valor_mano, reiniciar, ultimo_en_cantar)
             elif jugador == 2 and ultimo_en_cantar != 2:
-                valor_mano, reiniciar = truco(ronda, 1, mano1, valor_mano, reiniciar)
+                valor_mano, reiniciar, ultimo_en_cantar = truco(ronda, 1, mano1, valor_mano, reiniciar, ultimo_en_cantar)
                 ultimo_en_cantar = 2
             else:
                 print("Ya lo cantaste.")
