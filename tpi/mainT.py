@@ -104,5 +104,3 @@ def mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, ma
 
     print("----- Fin del juego -----")
     print("Puntos:", puntosj1, "-", puntosj2)
-
-mainT(mano1, mano2, mano3, jugador, ronda, puntosj1, puntosj2, reiniciar, manoj1, manoj2, valor_mano, ultimo_en_cantar, punto_pacial1, punto_pacial2)
