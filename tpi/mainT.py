@@ -1,7 +1,6 @@
 import os
 
-from utils.interfaz import (opciones_usuario,
-                            presentacion_mano, repartir, mostrar_cartas_mesa)
+from tpi.utils.interfaz import (opciones_usuario, presentacion_mano, repartir, mostrar_cartas_mesa)
 
 mano1 = [0] * 2
 mano2 = [0] * 2
