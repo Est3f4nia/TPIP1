@@ -1,4 +1,4 @@
-from utils import jerarquia
+from tpi.utils import jerarquia
 
 
 def mesa(manoj, ronda, jugador, punto_pacial1, punto_pacial2):
